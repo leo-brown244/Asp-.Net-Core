@@ -11,15 +11,19 @@ namespace MVC.Controllers
 {
     public class HelloWorldController : Controller
     {
+
         // GET: /<controller>/
-        public string Index()
+        public IActionResult Index()
         {
-            return "hello world";
+            return View();
         }
 
-        public string Welcome(string name, string ID)
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
+            ViewData["Message"] = "Hello";
+            ViewData["NumTimes"] = 2;
+
+            return View();
         }
 
     }
